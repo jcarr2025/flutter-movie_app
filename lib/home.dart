@@ -25,7 +25,34 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      drawer: new Drawer(),
+      drawer: new Drawer(
+        child: new ListView(
+          children: [
+            new  DrawerHeader(child: new Material()),
+            new ListTile(
+              title: new Text('Peliculas'),
+              trailing: new Icon( Icons.local_movies  ) ,
+            ),
+            new Divider(
+              height: 5.0,
+            ),
+            new ListTile(
+              title: new Text('Television'),
+              trailing: new Icon( Icons.live_tv  ) ,
+            ),
+            new Divider(
+              height: 5.0,
+            ),
+            new ListTile(
+              title: new Text('Cerrar'),
+              trailing: new Icon( Icons.close  ) ,
+              onTap: () => Navigator.of(context).pop(),
+            ),
+          ],
+        )
+
+      ),
+      body: new PageView(),
       bottomNavigationBar: new BottomNavigationBar(
         items: _getFooterItems(),
       ),
