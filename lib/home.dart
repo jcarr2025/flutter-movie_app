@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:s15v189movie_app/common/httpHandler.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  _HomeState createState() =>  new _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  @override
+  void initState(){
+    super.initState();
+    _loadJson();
+  }
+  _loadJson() async{
+    final data= await HttpHandler().fetchPopularMovies();
+    print(data);
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
