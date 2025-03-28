@@ -8,6 +8,7 @@ class Media{
   late String releaseDate;
   List<dynamic> genreId;
   factory Media(Map jsonMap){
+    return new Media(jsonMap);
 
   }
   Media.deserialize(jsonMap):
