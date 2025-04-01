@@ -14,7 +14,7 @@ class _HomeState extends State<Home> {
     _loadJson();
   }
   _loadJson() async{
-    final data= await HttpHandler().fetchPopularMovies();
+    final data= await HttpHandler().fetchMovies();
     print(data);
 
   }
