@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:s15v189movie_app/common/httpHandler.dart';
 import 'model/Media.dart';
 
-class MediaListx extends StatefulWidget {
+class MediaList extends StatefulWidget {
   @override
   _MediaListState createState() => new _MediaListState();
 }
 
-class _MediaListState extends State<MediaListx> {
+class _MediaListState extends State<MediaList> {
   List<Media> _media = [];
 
   @override
@@ -17,7 +17,7 @@ class _MediaListState extends State<MediaListx> {
   }
 
   void loadMovies() async {
-    var movies = await HttpHandler().fetchPopularMovies();
+    var movies = await HttpHandler().fetchMovies();
     setState(() {
       _media.addAll(movies);
     });
@@ -28,7 +28,7 @@ class _MediaListState extends State<MediaListx> {
     return Container(
       child: ListView.builder(
         itemBuilder: (BuildContext context, int index) {
-          return Column(
+          return new Column(
             children: <Widget>[
               Image.network(_media[index].getPosterUrl())
             ],

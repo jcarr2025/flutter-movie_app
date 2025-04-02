@@ -35,9 +35,9 @@ class HttpHandler {
     return json.decode(response.body); // Devuelve un Map o List
   }
 
-  Future<String> fetchMovies() async {  // Cambiado a Future<dynamic> (o usa un modelo específico)
+  Future<List<Media>> fetchMovies() async {  // Cambiado a Future<dynamic> (o usa un modelo específico)
     var uri =  new Uri.https( _baseUrl, '/3/tv/popular',
         {'language': _language, 'page':"1"});
-    return await getJson(uri).then( ( data)=>data.toString()); // Devuelve el JSON parseado como objeto
+    return await getJson(uri).then ( ( ( data)=>data['results'].map<Media>((item)=>new Media(item)).toList()   )); // Devuelve el JSON parseado como objeto
   }
 }
