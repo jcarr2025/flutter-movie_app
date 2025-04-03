@@ -10,7 +10,8 @@ class Media{
   late String releaseDate;
   List<dynamic> genreIds;
 
-  String getPosterUrl()=> getMediumPictureUrl( posterPath);
+  //String getPosterUrl()=> getMediumPictureUrl( posterPath);
+  String getBackDropUrl()=> getLargePictureUrl( backdropPath);
 
   factory Media(Map jsonMap){
     try {
