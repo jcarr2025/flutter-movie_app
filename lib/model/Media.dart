@@ -1,13 +1,13 @@
 import '../common/util.dart';
 
 class Media{
-  late int id;
-  late double voteAverage;
-  late String title;
-  late String posterPath;
-  late String backdropPath;
-  late String overview;
-  late String releaseDate;
+   late int id;
+   late double voteAverage;
+   late String title;
+   late String posterPath;
+   late String backdropPath;
+   late String overview;
+   late String releaseDate;
   List<dynamic> genreIds;
 
   //String getPosterUrl()=> getMediumPictureUrl( posterPath);
@@ -25,7 +25,7 @@ class Media{
   Media.deserialize(jsonMap):
       id = jsonMap['id'].toInt(),
       voteAverage = jsonMap['vote_average'].toDouble(),
-      title = jsonMap['title'],
+      title = jsonMap['name']??"",
       posterPath = jsonMap['poster_path']??"",
       backdropPath = jsonMap['backdrop_path']??"",
       overview = jsonMap['overview'],
