@@ -41,7 +41,7 @@ class MediaListItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Container(
+                    new Container(
                       child: new Text(
                         media.title,
                         style: new TextStyle(
@@ -50,6 +50,15 @@ class MediaListItem extends StatelessWidget {
                         ),
                       ),
                     ),
+                    new Container(
+                      padding: const EdgeInsets.only(top:4.0),
+                      child: new Text(media.getGenres(),
+                      style: new TextStyle(color: Colors.white),
+                      maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+
+                    )
                   ],
                 ))
           ]))
