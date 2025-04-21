@@ -13,6 +13,11 @@ class Media{
   //String getPosterUrl()=> getMediumPictureUrl( posterPath);
   String getBackDropUrl()=> getLargePictureUrl( backdropPath);
   String getGenres()=>getGenreValues(genreIds);
+  int getReleaseYear(){
+    if (releaseDate==null || releaseDate=="")
+      return 0;
+    return DateTime.parse( releaseDate).year;
+  }
 
   factory Media(Map jsonMap){
     try {
@@ -30,7 +35,7 @@ class Media{
       posterPath = jsonMap['poster_path']??"",
       backdropPath = jsonMap['backdrop_path']??"",
       overview = jsonMap['overview'],
-      releaseDate = jsonMap['release_date'],
+      releaseDate = jsonMap['first_air_date'],
       genreIds = jsonMap['genre_ids'].toList();
 
 
