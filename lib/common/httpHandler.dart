@@ -7,10 +7,13 @@ import 'dart:io';
 import '../model/Media.dart';
 
 class HttpHandler {
+  static  final _httpHandler = new HttpHandler();
   final String _baseUrl = 'api.themoviedb.org';
   final String _language = "es-ES";
 
-
+   static HttpHandler get(){
+     return _httpHandler;
+   }
 
 
   Future<List< Media>> fetchPopularMovies() async {
