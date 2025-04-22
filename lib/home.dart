@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:s15v189movie_app/common/MediaProvider.dart';
 import 'package:s15v189movie_app/media_list.dart';
 //import 'package:s15v189movie_app/common/httpHandler.dart';
 
@@ -15,7 +16,9 @@ class _HomeState extends State<Home> {
 
   }
 
-
+final MediaProvider movieProvider= new  MovieProvider();
+final MediaProvider showProvider= new  MovieProvider();
+MediaType mediaType= MediaType.movie;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,14 +42,24 @@ class _HomeState extends State<Home> {
             new  DrawerHeader(child: new Material()),
             new ListTile(
               title: new Text('Peliculas'),
+              selected: mediaType== MediaType.movie,
               trailing: new Icon( Icons.local_movies  ) ,
+              onTap: (){
+                _changeMediaType(MediaType.movie);
+                Navigator.of(context).pop();
+              },
             ),
             new Divider(
               height: 5.0,
             ),
             new ListTile(
               title: new Text('Television'),
+              selected:   mediaType==MediaType.show,
               trailing: new Icon( Icons.live_tv  ) ,
+              onTap: (){
+                _changeMediaType(MediaType.show);
+                Navigator.of(context).pop();
+              },
             ),
             new Divider(
               height: 5.0,
@@ -88,4 +101,12 @@ class _HomeState extends State<Home> {
       ),
     ];
   }
+   void _changeMediaType(MediaType type){
+    if (mediaType!=type){
+      setState(() {
+        mediaType=type;
+      });
+    }
+   }
+
 }

@@ -5,6 +5,7 @@ import 'package:s15v189movie_app/common/Constants.dart';
 import 'dart:io';
 
 import '../model/Media.dart';
+import 'MediaProvider.dart';
 
 class HttpHandler {
   static  final _httpHandler = new HttpHandler();

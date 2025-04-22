@@ -1,3 +1,4 @@
+import '../common/MediaProvider.dart';
 import '../common/util.dart';
 
 class Media {
@@ -39,4 +40,4 @@ class Media {
         genreIds = jsonMap['genre_ids'].toList();
 }
 
-enum MediaType { movie, show }
+

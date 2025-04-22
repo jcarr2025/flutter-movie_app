@@ -25,3 +25,4 @@ class ShowProvider extends MediaProvider{
   }
 }
 
+enum MediaType { movie, show }
