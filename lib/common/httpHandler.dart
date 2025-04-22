@@ -42,13 +42,13 @@ class HttpHandler {
     var uri =  new Uri.https( _baseUrl, '/3/movie/popular',
         {'language': _language, 'page':"1"});
     final data = await getJson(uri);
-    return (data['results'] as List).map<Media>((item) => Media(item)).toList();
+    return (data['results'] as List).map<Media>((item) => Media(item,MediaType.movie )).toList();
   }
 
   Future<List<Media>> fetchShow() async {  // Cambiado a Future<dynamic> (o usa un modelo específico)
     var uri =  new Uri.https( _baseUrl, '/3/tv/popular',
         {'language': _language, 'page':"1"});
     final data = await getJson(uri);
-    return (data['results'] as List).map<Media>((item) => Media(item)).toList();
+    return (data['results'] as List).map<Media>((item) => Media(item, MediaType.show)).toList();
   }
 }
