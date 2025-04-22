@@ -18,6 +18,10 @@ class MovieProvider extends MediaProvider{
 
 
 class ShowProvider extends MediaProvider{
-
+  HttpHandler _client = HttpHandler.get();
+  @override
+  Future<List<Media>> fetchMedia(){
+    return _client.fetchShow();
+  }
 }
 

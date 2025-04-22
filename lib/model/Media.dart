@@ -31,11 +31,11 @@ class Media{
   Media.deserialize(jsonMap):
       id = jsonMap['id'].toInt(),
       voteAverage = jsonMap['vote_average'].toDouble(),
-      title = jsonMap['name']??"",
+      title = jsonMap['title']??"",
       posterPath = jsonMap['poster_path']??"",
       backdropPath = jsonMap['backdrop_path']??"",
       overview = jsonMap['overview'],
-      releaseDate = jsonMap['first_air_date'],
+      releaseDate = jsonMap['release_date'],
       genreIds = jsonMap['genre_ids'].toList();
 
 
