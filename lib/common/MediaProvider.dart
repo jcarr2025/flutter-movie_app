@@ -22,6 +22,7 @@ class ShowProvider extends MediaProvider{
   @override
   Future<List<Media>> fetchMedia(){
     return _client.fetchShow();
+
   }
 }
 

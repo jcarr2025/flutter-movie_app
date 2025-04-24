@@ -74,10 +74,9 @@ MediaType mediaType= MediaType.movie;
 
       ),
       body: new PageView(
-        children: <Widget>[
-          new MediaList()
-
-        ],
+        children:
+          _getMediaList()
+        ,
       ),
       bottomNavigationBar: new BottomNavigationBar(
         items: _getFooterItems(),
@@ -107,6 +106,16 @@ MediaType mediaType= MediaType.movie;
         mediaType=type;
       });
     }
+   }
+   List<Widget> _getMediaList(){
+    print("  content of mediatype: "+mediaType.toString());
+    return(mediaType== MediaType.movie) ?
+    <Widget>[
+      new  MediaList(movieProvider)
+    ]:
+    <Widget>[
+      new MediaList(showProvider)
+    ];
    }
 
 }
