@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:s15v189movie_app/common/MediaProvider.dart';
 import 'package:s15v189movie_app/media_list.dart';
@@ -12,12 +14,20 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   void initState(){
+    _pageController=new PageController();
     super.initState();
-
+  }
+  @override
+  void dispose(){
+    _pageController?.dispose();
+    super.dispose();
   }
 
 final MediaProvider movieProvider= new  MovieProvider();
 final MediaProvider showProvider= new  MovieProvider();
+PageController? _pageController;
+int _page=0;
+
 MediaType mediaType= MediaType.movie;
   @override
   Widget build(BuildContext context) {
@@ -75,17 +85,42 @@ MediaType mediaType= MediaType.movie;
       ),
       body: new PageView(
         children:
-          _getMediaList()
-        ,
+          _getMediaList(),
+        controller: _pageController,
+        onPageChanged: (int index){
+          setState(() {
+            _page=index;
+          });
+        },
+
       ),
       bottomNavigationBar: new BottomNavigationBar(
         items: _getFooterItems(),
+        onTap: _navigationTapped,
+        currentIndex: _page,
+
       ),
     );
   }
 
   List<BottomNavigationBarItem> _getFooterItems() {
-    return [
+    return
+    mediaType==MediaType.show?
+      [
+      new BottomNavigationBarItem(
+        icon: new Icon(Icons.thumb_up),
+        label: 'Populares',
+      ),
+      new BottomNavigationBarItem(
+        icon: new Icon(Icons.update),
+        label: 'En el Aire',
+      ),
+      new BottomNavigationBarItem(
+        icon: new Icon(Icons.account_balance_sharp),
+        label: 'Mejor Valoradas',
+      ),
+    ]:
+    [
       new BottomNavigationBarItem(
         icon: new Icon(Icons.thumb_up),
         label: 'Populares',
@@ -98,7 +133,8 @@ MediaType mediaType= MediaType.movie;
         icon: new Icon(Icons.account_balance_sharp),
         label: 'Mejor Valoradas',
       ),
-    ];
+    ]
+    ;
   }
    void _changeMediaType(MediaType type){
     if (mediaType!=type){
@@ -111,11 +147,22 @@ MediaType mediaType= MediaType.movie;
     print("  content of mediatype: "+mediaType.toString());
     return(mediaType== MediaType.movie) ?
     <Widget>[
-      new  MediaList(movieProvider)
+      new  MediaList(movieProvider, 'popular'),
+      new  MediaList(movieProvider, 'upcoming'),
+      new  MediaList(movieProvider, 'top'),
     ]:
     <Widget>[
-      new MediaList(showProvider)
+      new MediaList(showProvider, 'popular'),
+      new MediaList(showProvider, 'on_the_air'),
+      new MediaList(showProvider, 'top_rated'),
     ];
+   }
+   void _navigationTapped(int page) {
+     setState(() {
+     _page=page;
+     });
+     // Animate to the selected page
+    _pageController?.animateToPage(_page, duration: const Duration(microseconds: 300), curve: Curves.ease);
    }
 
 }

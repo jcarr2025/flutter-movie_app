@@ -5,7 +5,7 @@ import 'model/Media.dart';
 class MediaListItem extends StatelessWidget {
   final Media media;
 
-  const MediaListItem({required this.media});
+  MediaListItem({required this.media});
 
   @override
   Widget build(BuildContext context) {

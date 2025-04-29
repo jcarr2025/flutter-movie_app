@@ -39,15 +39,15 @@ class HttpHandler {
     return json.decode(response.body); // Devuelve un Map o List
   }
 
-  Future<List<Media>> fetchMovies() async {  // Cambiado a Future<dynamic> (o usa un modelo específico)
-    var uri =  new Uri.https( _baseUrl, '/3/movie/popular',
+  Future<List<Media>> fetchMovies([String category ='popular']) async {  // Cambiado a Future<dynamic> (o usa un modelo específico)
+    var uri =  new Uri.https( _baseUrl, '/3/movie/$category',
         {'language': _language, 'page':"1"});
     final data = await getJson(uri);
     return (data['results'] as List).map<Media>((item) => Media(item,MediaType.movie )).toList();
   }
 
-  Future<List<Media>> fetchShow() async {  // Cambiado a Future<dynamic> (o usa un modelo específico)
-    var uri =  new Uri.https( _baseUrl, '/3/tv/popular',
+  Future<List<Media>> fetchShow( [ String category = 'popular'] ) async {  // Cambiado a Future<dynamic> (o usa un modelo específico)
+    var uri =  new Uri.https( _baseUrl, '/3/tv/$category',
         {'language': _language, 'page':"1"});
     final data = await getJson(uri);
     return (data['results'] as List).map<Media>((item) => Media(item, MediaType.show)).toList();
