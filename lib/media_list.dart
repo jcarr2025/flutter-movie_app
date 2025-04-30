@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:s15v189movie_app/common/MediaProvider.dart';
 import 'package:s15v189movie_app/common/httpHandler.dart';
 import 'package:s15v189movie_app/media_list_item.dart';
+import 'media_detail.dart';
 import 'model/Media.dart';
 
 class MediaList extends StatefulWidget {
@@ -49,7 +50,18 @@ class _MediaListState extends State<MediaList> {
     return Container(
       child: ListView.builder(
         itemBuilder: (BuildContext context, int index) {
-          return new MediaListItem(media: _media[index]);
+          return new ElevatedButton(
+            child:new MediaListItem(media: _media[index]),
+            
+            onPressed: (){
+              Navigator.push(
+                context,
+                new MaterialPageRoute(
+                  builder: (context) => new MediaDetail(_media[index]),
+                ),
+              );
+            },
+          );
         },
         itemCount: _media.length,
       ),
