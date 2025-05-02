@@ -25,20 +25,19 @@ class MediaDetail extends StatelessWidget {
           ),
           new SingleChildScrollView(
             child: new Container(
-              margin:  const EdgeInsets.all(20.0),
+              margin: const EdgeInsets.all(20.0),
               child: Column(
-                children:<Widget> [
+                children: <Widget>[
                   new Container(
                     alignment: Alignment.center,
                     child: new Container(
                       width: 390.0,
                       height: 390.0,
-
                     ),
                     decoration: new BoxDecoration(
                       borderRadius: new BorderRadius.circular(10.0),
                       image: new DecorationImage(
-                          image: new NetworkImage(media.getPosterUrl()),
+                        image: new NetworkImage(media.getPosterUrl()),
                       ),
                       boxShadow: [
                         new BoxShadow(
@@ -49,9 +48,30 @@ class MediaDetail extends StatelessWidget {
                       ],
                     ),
                   ),
-
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  new Container(
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 5.0,
+                      ),
+                      child: new Row(
+                        children: [
+                          new Expanded(
+                            child: new Text(
+                              media.title,
+                              overflow: TextOverflow.fade,
+                              maxLines: 1,
+                              style: new TextStyle(
+                                color: Colors.white,
+                                fontSize: 30.0,
+                                fontFamily: "Arvo",
+                              ),
+                            ),
+                          ),
+                        ],
+                      )),
                 ],
-
               ),
             ),
           )
