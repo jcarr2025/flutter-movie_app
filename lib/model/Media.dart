@@ -11,7 +11,7 @@ class Media {
   late String releaseDate;
   List<dynamic> genreIds;
 
-  //String getPosterUrl()=> getMediumPictureUrl( posterPath);
+  String getPosterUrl()=> getMediumPictureUrl( posterPath);
   String getBackDropUrl() => getLargePictureUrl(backdropPath);
 
   String getGenres() => getGenreValues(genreIds);

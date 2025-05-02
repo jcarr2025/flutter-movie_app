@@ -23,6 +23,31 @@ class MediaDetail extends StatelessWidget {
               color: Colors.black.withOpacity(0.5),
             ),
           ),
+          new SingleChildScrollView(
+            child: new Container(
+              margin:  const EdgeInsets.all(20.0),
+              child: Column(
+                children:<Widget> [
+                  new Container(
+                    alignment: Alignment.center,
+                    child: new Container(
+                      width: 390.0,
+                      height: 390.0,
+
+                    ),
+                    decoration: new BoxDecoration(
+                      borderRadius: new BorderRadius.circular(10.0),
+                      image: new DecorationImage(
+                          image: new NetworkImage(media.getPosterUrl()),
+                      )
+                    ),
+                  ),
+
+                ],
+
+              ),
+            ),
+          )
         ],
       ),
     );
