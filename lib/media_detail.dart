@@ -69,6 +69,13 @@ class MediaDetail extends StatelessWidget {
                               ),
                             ),
                           ),
+                          new Text('${media.voteAverage.toString()} /10', style:
+                          TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
+                            fontFamily: "Arvo",
+                          ),
+                          )
                         ],
                       )),
                 ],
