@@ -52,32 +52,46 @@ class MediaDetail extends StatelessWidget {
                     height: 20.0,
                   ),
                   new Container(
-                      margin: const EdgeInsets.symmetric(
-                        vertical: 5.0,
-                      ),
-                      child: new Row(
-                        children: [
-                          new Expanded(
-                            child: new Text(
-                              media.title,
-                              overflow: TextOverflow.fade,
-                              maxLines: 1,
-                              style: new TextStyle(
-                                color: Colors.white,
-                                fontSize: 30.0,
-                                fontFamily: "Arvo",
-                              ),
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 5.0,
+                    ),
+                    child: new Row(
+                      children: [
+                        new Expanded(
+                          child: new Text(
+                            media.title,
+                            overflow: TextOverflow.fade,
+                            maxLines: 1,
+                            style: new TextStyle(
+                              color: Colors.white,
+                              fontSize: 30.0,
+                              fontFamily: "Arvo",
                             ),
                           ),
-                          new Text('${media.voteAverage.toString()} /10', style:
-                          TextStyle(
+                        ),
+                        new Text(
+                          '${media.voteAverage.toString()} /10',
+                          style: TextStyle(
                             color: Colors.white,
                             fontSize: 20.0,
                             fontFamily: "Arvo",
                           ),
-                          )
-                        ],
-                      )),
+                        )
+                      ],
+                    ),
+                  ),
+                  new Column(
+                    children:<Widget> [
+                      new Text(media.overview,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 3,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17.0,
+                        fontFamily: "Arvo",
+                      ),)
+                    ],
+                  )
                 ],
               ),
             ),
