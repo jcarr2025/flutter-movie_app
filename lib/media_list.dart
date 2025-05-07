@@ -52,12 +52,12 @@ class _MediaListState extends State<MediaList> {
         itemBuilder: (BuildContext context, int index) {
           return new ElevatedButton(
             child:new MediaListItem(media: _media[index]),
-            
+
             onPressed: (){
               Navigator.push(
                 context,
                 new MaterialPageRoute(
-                  builder: (context) => new MediaDetail(_media[index]),
+                  builder: (context) => new MediaDetail(_media[index], widget.provider),
                 ),
               );
             },

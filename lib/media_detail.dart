@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:s15v189movie_app/common/MediaProvider.dart';
 import 'package:s15v189movie_app/model/Media.dart';
 import 'dart:ui' as ui;
 
+import 'cast_scroller.dart';
+
 class MediaDetail extends StatelessWidget {
   final Media media;
-
-  MediaDetail(this.media);
+  final MediaProvider provider;
+  MediaDetail(this.media,this.provider);
 
   @override
   Widget build(BuildContext context) {
@@ -81,17 +84,20 @@ class MediaDetail extends StatelessWidget {
                     ),
                   ),
                   new Column(
-                    children:<Widget> [
-                      new Text(media.overview,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 3,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17.0,
-                        fontFamily: "Arvo",
-                      ),)
+                    children: <Widget>[
+                      new Text(
+                        media.overview,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 3,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17.0,
+                          fontFamily: "Arvo",
+                        ),
+                      )
                     ],
-                  )
+                  ),
+                  CastController( provider, media.id),
                 ],
               ),
             ),
