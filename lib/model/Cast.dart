@@ -4,6 +4,8 @@ class Cast{
   int id;
   String name;
   String pofilePath;
+  String getCastUrl()=> getMediumPictureUrl( pofilePath);
+
   factory Cast(Map jsonMap, MediaType mediaType) {
     try {
       return new Cast.deserialize(jsonMap, mediaType);
