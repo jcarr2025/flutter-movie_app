@@ -15,7 +15,8 @@ class Cast{
     }
   }
   Cast.deserialize(jsonMap, MediaType mediaType)
-      : id = jsonMap['cast_id'].toInt(),
+      :
+        id = mediaType==MediaType.movie? jsonMap['cast_id'].toInt(): jsonMap['id'].toInt(),
         name = jsonMap['name'] ?? "",
         pofilePath = jsonMap['profile_path'] ?? "";
 
