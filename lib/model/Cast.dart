@@ -20,4 +20,8 @@ class Cast{
         name = jsonMap['name'] ?? "",
         pofilePath = jsonMap['profile_path'] ?? "";
 
+  Cast.fromDB( Map<String, dynamic> parsedJson):
+        id = parsedJson['id'].toInt(),
+        name = parsedJson['name'].toString(),
+        pofilePath = parsedJson['profile_path'];
 }

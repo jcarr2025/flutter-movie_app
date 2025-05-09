@@ -1,3 +1,4 @@
+import 'package:s15v189movie_app/model/Cast.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
@@ -27,14 +28,14 @@ class DBProvider {
     });
   }
 
-  fecthCats(int mediaId) async {
-    var maps = db?.query("Cast",
+   Future<List<Cast>?>  fecthCats(int mediaId) async {
+    var maps = await db?.query("Cast",
         columns: null,
         where: "movie_id = ?",
         whereArgs: [mediaId]);
     if (maps != null) {
-      return [];
+       return maps.map<Cast>((item) => new Cast.fromDB(item)).toList();
     }
-
+    return null;
   }
 }
