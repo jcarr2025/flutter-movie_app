@@ -58,12 +58,12 @@ class HttpHandler {
     var uri =  new Uri.https( _baseUrl, '/3/movie/$mediaId/credits',
         {'language': _language, 'page':"1"});
     final data = await getJson(uri);
-    return (data['cast'] as List).map<Cast>((item) => Cast(item, MediaType.movie)).toList();
+    return (data['cast'] as List).map<Cast>((item) => Cast(item, MediaType.movie,mediaId)).toList();
   }
   Future<List<Cast>> fetchCreditsShows( int mediaId ) async {  // Cambiado a Future<dynamic> (o usa un modelo específico)
     var uri =  new Uri.https( _baseUrl, '/3/tv/$mediaId/credits',
         {'language': _language, 'page':"1"});
     final data = await getJson(uri);
-    return (data['cast'] as List).map<Cast>((item) => Cast(item, MediaType.show)).toList();
+    return (data['cast'] as List).map<Cast>((item) => Cast(item, MediaType.show,mediaId)).toList();
   }
 }

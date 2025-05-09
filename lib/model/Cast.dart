@@ -3,25 +3,29 @@ import '../common/util.dart';
 class Cast{
   int id;
   String name;
-  String pofilePath;
-  String getCastUrl()=> getMediumPictureUrl( pofilePath);
+  String profilePath;
+  int mediaId;
+  String getCastUrl()=> getMediumPictureUrl( profilePath);
 
-  factory Cast(Map jsonMap, MediaType mediaType) {
+  factory Cast(Map jsonMap, MediaType mediaType, int mediaId) {
     try {
-      return new Cast.deserialize(jsonMap, mediaType);
+      return new Cast.deserialize(jsonMap, mediaType, mediaId);
     }
     catch(ex){
       throw ex;
     }
   }
-  Cast.deserialize(jsonMap, MediaType mediaType)
+  Cast.deserialize(jsonMap, MediaType mediaType, int mediaId)
       :
         id = mediaType==MediaType.movie? jsonMap['cast_id'].toInt(): jsonMap['id'].toInt(),
         name = jsonMap['name'] ?? "",
-        pofilePath = jsonMap['profile_path'] ?? "";
+        profilePath = jsonMap['profile_path'] ?? "",
+        mediaId = mediaId;
 
   Cast.fromDB( Map<String, dynamic> parsedJson):
         id = parsedJson['id'].toInt(),
         name = parsedJson['name'].toString(),
-        pofilePath = parsedJson['profile_path'];
+        profilePath = parsedJson['profile_path'],
+        mediaId = parsedJson['media_id'].toInt();
+
 }

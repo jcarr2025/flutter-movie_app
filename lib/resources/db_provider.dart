@@ -22,7 +22,7 @@ class DBProvider {
           id INTEGER PRIMARY KEY,
           name TEXT,
           profile_path TEXT,
-          movie_id INTEGER
+          media_id INTEGER
           )
       """);
     });
