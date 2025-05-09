@@ -28,4 +28,13 @@ class Cast{
         profilePath = parsedJson['profile_path'],
         mediaId = parsedJson['media_id'].toInt();
 
+
+  Map<String,dynamic> toMap(){
+    return <String,dynamic> {
+      'id': id,
+      'name': name,
+      'profile_path': profilePath,
+      'media_id': mediaId
+    };
+  }
 }

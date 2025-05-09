@@ -38,4 +38,10 @@ class DBProvider {
     }
     return null;
   }
+  void AddCast(Cast cast) {
+      db?.insert(
+          "Cast",
+          cast.toMap(),
+          conflictAlgorithm: ConflictAlgorithm.fail);
+  }
 }
