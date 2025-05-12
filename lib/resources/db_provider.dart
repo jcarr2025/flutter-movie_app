@@ -33,7 +33,7 @@ class DBProvider {
     });
   }
 
-   Future<List<Cast>?>  fecthCats(int mediaId) async {
+   Future<List<Cast>?>  fecthCast(int mediaId) async {
     var maps = await db?.query("Cast",
         columns: null,
         where: "movie_id = ?",
