@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:s15v189movie_app/common/MediaProvider.dart';
-import 'package:s15v189movie_app/common/httpHandler.dart';
+import 'package:s15v189movie_app/resources/httpHandler.dart';
 import 'package:s15v189movie_app/media_list_item.dart';
 import 'media_detail.dart';
 import 'model/Media.dart';

@@ -6,15 +6,15 @@ import 'package:s15v189movie_app/model/Cast.dart';
 import 'dart:io';
 
 import '../model/Media.dart';
-import 'MediaProvider.dart';
+import '../common/MediaProvider.dart';
 
-class HttpHandler {
-  static  final _httpHandler = new HttpHandler();
+class ApiProvider {
+  static  final _apiProvider = new ApiProvider();
   final String _baseUrl = 'api.themoviedb.org';
   final String _language = "es-ES";
 
-   static HttpHandler get(){
-     return _httpHandler;
+   static ApiProvider get(){
+     return _apiProvider;
    }
 
 

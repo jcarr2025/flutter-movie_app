@@ -5,10 +5,15 @@ import 'package:path/path.dart';
 import 'dart:io';
 
 class DBProvider {
+  static final DBProvider _dbProvider = DBProvider();
   Database? db;
 
   DBProvider() {
     init();
+  }
+
+  static DBProvider get(){
+    return _dbProvider;
   }
 
   void init() async {

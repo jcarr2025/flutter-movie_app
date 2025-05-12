@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:s15v189movie_app/common/httpHandler.dart';
+import 'package:s15v189movie_app/resources/httpHandler.dart';
 import 'package:s15v189movie_app/model/Cast.dart';
 
 import '../model/Media.dart';
@@ -10,7 +10,7 @@ abstract class MediaProvider{
 }
 
 class MovieProvider extends MediaProvider{
-  HttpHandler _client = HttpHandler.get();
+  ApiProvider _client = ApiProvider.get();
   @override
   Future<List<Media>> fetchMedia(String category){
     return _client.fetchMovies();
@@ -25,7 +25,7 @@ class MovieProvider extends MediaProvider{
 
 
 class ShowProvider extends MediaProvider{
-  HttpHandler _client = HttpHandler.get();
+  ApiProvider _client = ApiProvider.get();
   @override
   Future<List<Media>> fetchMedia(String category){
     return _client.fetchShow();
