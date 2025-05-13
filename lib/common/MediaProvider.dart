@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'package:s15v189movie_app/resources/httpHandler.dart';
 import 'package:s15v189movie_app/model/Cast.dart';
+import 'package:s15v189movie_app/resources/repository.dart';
 
 import '../model/Media.dart';
 abstract class MediaProvider{
+  Repository _repository= Repository.get();
   Future<List<Media>> fetchMedia( String category);
-  Future<List<Cast>> fetchCast( int mediaId);
+  Future<List<Cast>?> fetchCast( int mediaId);
 
 }
 
@@ -17,8 +19,8 @@ class MovieProvider extends MediaProvider{
   }
 
   @override
-  Future<List<Cast>> fetchCast(int mediaId) {
-    return _client.fetchCreditsMovie(mediaId);
+  Future<List<Cast>?> fetchCast(int mediaId) {
+    return _repository.fetchCastShows(mediaId);
   }
 
 }
@@ -33,8 +35,8 @@ class ShowProvider extends MediaProvider{
   }
 
   @override
-  Future<List<Cast>> fetchCast(int mediaId) {
-    return _client.fetchCreditsShows(mediaId);
+  Future<List<Cast>?> fetchCast(int mediaId) {
+    return _repository.fetchCastMovies(mediaId);
   }
 }
 

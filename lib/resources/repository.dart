@@ -3,8 +3,14 @@ import 'package:s15v189movie_app/resources/db_provider.dart';
 import 'package:s15v189movie_app/resources/httpHandler.dart';
 
 class Repository {
+  static final Repository _repository = new Repository();
   ApiProvider _apiProvider= ApiProvider.get();
   DBProvider _dbProvider= DBProvider.get();
+
+  static Repository get(){
+    return _repository;
+
+  }
 
    Future<List<Cast>?> fetchCastMovies(int mediaId) async {
      List<Cast>? list=await _dbProvider.fecthCast(mediaId);

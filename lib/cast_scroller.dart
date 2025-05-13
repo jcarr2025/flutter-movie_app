@@ -24,7 +24,7 @@ class _CastControllerState extends State<CastController> {
   void loadCast() async {
     var results = await widget.provider.fetchCast(widget.mediaId);
     setState(() {
-      _casts.addAll(results);
+      _casts.addAll(results!);
     });
   }
 
