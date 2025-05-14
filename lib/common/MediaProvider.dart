@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:s15v189movie_app/resources/httpHandler.dart';
+import 'package:s15v189movie_app/resources/api_provider.dart';
 import 'package:s15v189movie_app/model/Cast.dart';
 import 'package:s15v189movie_app/resources/repository.dart';
 

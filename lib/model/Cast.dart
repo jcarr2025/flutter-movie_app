@@ -9,6 +9,7 @@ class Cast{
 
   factory Cast(Map jsonMap, MediaType mediaType, int mediaId) {
     try {
+      print( "antes de deserailize");
       return new Cast.deserialize(jsonMap, mediaType, mediaId);
     }
     catch(ex){
@@ -17,7 +18,7 @@ class Cast{
   }
   Cast.deserialize(jsonMap, MediaType mediaType, int mediaId)
       :
-        id = mediaType==MediaType.movie? jsonMap['cast_id'].toInt(): jsonMap['id'].toInt(),
+        id = jsonMap['id'].toInt(),
         name = jsonMap['name'] ?? "",
         profilePath = jsonMap['profile_path'] ?? "",
         mediaId = mediaId;

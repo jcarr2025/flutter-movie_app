@@ -23,6 +23,7 @@ class Media {
 
   factory Media(Map jsonMap, MediaType mediaType) {
     try {
+      print("antes de media.deserailize");
       return new Media.deserialize(jsonMap, mediaType);
     } catch (ex) {
       throw ex;

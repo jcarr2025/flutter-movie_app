@@ -33,10 +33,11 @@ class DBProvider {
     });
   }
 
-   Future<List<Cast>?>  fecthCast(int mediaId) async {
-    var maps = await db?.query("Cast",
+   Future<List<Cast>?>  fecthCasts(int mediaId) async {
+    print('${mediaId.toString()}Lectuera de base de datos local '  );
+    var maps = await db?.query("Casts",
         columns: null,
-        where: "movie_id = ?",
+        where: "media_Id = ?",
         whereArgs: [mediaId]);
     if (maps != null) {
        return maps.map<Cast>((item) => new Cast.fromDB(item)).toList();
@@ -44,6 +45,7 @@ class DBProvider {
     return null;
   }
   void AddCast(Cast cast) {
+    print('${cast.mediaId.toString()}Insertar base de datos local '  );
       db?.insert(
           "Cast",
           cast.toMap(),

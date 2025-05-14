@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:s15v189movie_app/common/MediaProvider.dart';
 import 'package:s15v189movie_app/media_list.dart';
-//import 'package:s15v189movie_app/common/httpHandler.dart';
+//import 'package:s15v189movie_app/common/api_provider.dart';
 
 class Home extends StatefulWidget {
 

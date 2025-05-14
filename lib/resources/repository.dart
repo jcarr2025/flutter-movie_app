@@ -1,6 +1,6 @@
 import 'package:s15v189movie_app/model/Cast.dart';
 import 'package:s15v189movie_app/resources/db_provider.dart';
-import 'package:s15v189movie_app/resources/httpHandler.dart';
+import 'package:s15v189movie_app/resources/api_provider.dart';
 
 class Repository {
   static final Repository _repository = new Repository();
@@ -13,7 +13,7 @@ class Repository {
   }
 
    Future<List<Cast>?> fetchCastMovies(int mediaId) async {
-     List<Cast>? list=await _dbProvider.fecthCast(mediaId);
+     List<Cast>? list=await _dbProvider.fecthCasts(mediaId);
      if(list!=null){
         return list;
      }
@@ -23,7 +23,7 @@ class Repository {
   }
 
   Future<List<Cast>?> fetchCastShows(int mediaId) async {
-    List<Cast>? list=await _dbProvider.fecthCast(mediaId);
+    List<Cast>? list=await _dbProvider.fecthCasts(mediaId);
     if(list!=null){
       return list;
     }
