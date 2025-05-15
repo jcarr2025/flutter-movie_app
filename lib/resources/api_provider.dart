@@ -3,12 +3,13 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:s15v189movie_app/common/Constants.dart';
 import 'package:s15v189movie_app/model/Cast.dart';
+import 'package:s15v189movie_app/resources/resource_provider.dart';
 import 'dart:io';
 
 import '../model/Media.dart';
 import '../common/MediaProvider.dart';
 
-class ApiProvider {
+class ApiProvider  implements ResourceProvider {
   static  final _apiProvider = new ApiProvider();
   final String _baseUrl = 'api.themoviedb.org';
   final String _language = "es-ES";
@@ -54,18 +55,13 @@ class ApiProvider {
     return (data['results'] as List).map<Media>((item) => Media(item, MediaType.show)).toList();
   }
 
-  Future<List<Cast>> fetchCreditsMovie( int mediaId ) async {  // Cambiado a Future<dynamic> (o usa un modelo específico)
+  Future<List<Cast>> fetchCasts( int mediaId , MediaType mediaType) async {  // Cambiado a Future<dynamic> (o usa un modelo específico)
+     final String endpoint=(mediaType==MediaType.movie)?'movie':'tv';
     print('${mediaId.toString()}Lectura de api tmdb  para movies'  );
-    var uri =  new Uri.https( _baseUrl, '/3/movie/$mediaId/credits',
+    var uri =  new Uri.https( _baseUrl, '/3/$endpoint/$mediaId/credits',
         {'language': _language, 'page':"1"});
     final data = await getJson(uri);
     return (data['cast'] as List).map<Cast>((item) => Cast(item, MediaType.movie,mediaId)).toList();
   }
-  Future<List<Cast>> fetchCreditsShows( int mediaId ) async {  // Cambiado a Future<dynamic> (o usa un modelo específico)
-    print('${mediaId.toString()}Lectura de api tmdb  para shows'  );
-    var uri =  new Uri.https( _baseUrl, '/3/tv/$mediaId/credits',
-        {'language': _language, 'page':"1"});
-    final data = await getJson(uri);
-    return (data['cast'] as List).map<Cast>((item) => Cast(item, MediaType.show,mediaId)).toList();
-  }
+
 }

@@ -20,7 +20,7 @@ class MovieProvider extends MediaProvider{
 
   @override
   Future<List<Cast>?> fetchCast(int mediaId) {
-    return _repository.fetchCastShows(mediaId);
+    return _repository.fetchCastMovies(mediaId);
   }
 
 }
@@ -36,7 +36,7 @@ class ShowProvider extends MediaProvider{
 
   @override
   Future<List<Cast>?> fetchCast(int mediaId) {
-    return _repository.fetchCastMovies(mediaId);
+    return _repository.fetchCastShows(mediaId);
   }
 }
 

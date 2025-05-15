@@ -1,10 +1,12 @@
+import 'package:s15v189movie_app/common/MediaProvider.dart';
 import 'package:s15v189movie_app/model/Cast.dart';
+import 'package:s15v189movie_app/resources/resource_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'dart:io';
 
-class DBProvider {
+class DBProvider   implements ResourceProvider {
   static final DBProvider _dbProvider = DBProvider();
   Database? db;
 
@@ -33,7 +35,7 @@ class DBProvider {
     });
   }
 
-   Future<List<Cast>?>  fecthCasts(int mediaId) async {
+   Future<List<Cast>?>  fetchCasts(int mediaId, MediaType mediaType) async {
     print('${mediaId.toString()}Lectuera de base de datos local '  );
     var maps = await db?.query("Casts",
         columns: null,
@@ -51,4 +53,8 @@ class DBProvider {
           cast.toMap(),
           conflictAlgorithm: ConflictAlgorithm.fail);
   }
+
+
+
+
 }
