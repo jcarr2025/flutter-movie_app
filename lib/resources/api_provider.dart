@@ -65,3 +65,4 @@ class ApiProvider  implements ResourceProvider {
   }
 
 }
+final ApiProvider apiProvider= new ApiProvider();

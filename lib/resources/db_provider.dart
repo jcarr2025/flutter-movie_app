@@ -6,7 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'dart:io';
 
-class DBProvider   implements ResourceProvider {
+class DBProvider   implements ResourceProvider, CacheProvider {
   static final DBProvider _dbProvider = DBProvider();
   Database? db;
 
@@ -54,7 +54,5 @@ class DBProvider   implements ResourceProvider {
           conflictAlgorithm: ConflictAlgorithm.fail);
   }
 
-
-
-
 }
+final DBProvider dbProvider= new DBProvider();
